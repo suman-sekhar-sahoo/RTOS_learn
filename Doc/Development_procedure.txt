@@ -1,0 +1,39 @@
+1.Download STM32cube IDE and Download freeRTOS all files from freeRTOS.org.
+
+2.Open STM32cube IDE and give your empty workspace(Locally created) path to open the STM32cube.
+
+3.File->new->STM32 project->select Board select->Enter board commercial part number->Hit next->Give project name->In targeted project type
+if you choose STM32cube(Generate peripheral code through STM32cube GUI) or If you choose Empty(Write code for STM32 from scrach).
+Initialize all peripherals to default mode->No
+Open device configuration tool in STM32cube->Yes
+
+3.Workspace opened with CMSIS core layer and application layer files.
+There are 4 layers :
+         1.Application layer
+         2.CMSIS RTOS API layer	-We are not using here.
+         3.RTOS layer(Any RTOS) -We are using FreeRTOS here.
+         4.CMSIS core layer
+         5.Cortex Mx processor
+
+4.Create a Folder named Third-party.(Procedure to add FreeRTOS layer in workspace).
+5.Create a Folder.Third-party->FreeRTOS.Copy all FreeRTOS kernel code into this.(i.e Copy from FreeRTOS main
+folder to your own project folder).
+6.Copy source,License and all .c file except Portable folder.(Same as above)
+7.Copy portable folder to main workspace.(Same as above)
+Delete all file except GCC,MemMang and readme file.
+8.In GCC folder keep Cortex M4F(as our board is based on this cortex) and delete all.
+9.In core->sysmem.c shouldn't added to our workspace because we were using FreeRTOS mem manangement code(Portable->memmanagement).
+So right click->propertise->c/c++ build->tick exclude from build.
+10.Different heap management files are there in FreeRTOS .But we will use heap4.c for our project.
+11.After build all,We face couple of errors which says no defination of header file.So we need to add headerfile path to tell
+the compiler about its existance.
+12.For that go to project->right click->propertise->c/c++ build->expand it->settings->MCU GCC compiler->Include path->Include path by choosing '+'
+sign->choose (FreeRTOS->include)&(Portable->GCC->ARM-CM4F).Click on ok and apply.
+13.Compile and will get FreeRTOSconfig.h related error.For that go to freeRTOS download->Demo->search for stm32f407ZG-SK.Copy FreeRTOSconfig.h
+to your won workspace.(Thirdparty->FreeRTOS->paste).
+14.There are errors due to conflict function defination with svc handler and pendsv handler present both places in thirdparty->portable->gcc->armCM4F->port.c
+and src->stm32f4xx.c. So to solve this conflict, you have to click on FreeRTOS_ProjectW.ioc and go to systemcore->NVIC->Codegeneration->uncheck pendable request for
+system service,timebase:system tick timer,system service call by SWI instruction.->press ctrl+s,it will done code generation.Rebuild it.
+15.Still there is a vapplicationTICKHook() error by the time rebuild.For that in FreeRTOSconfig.h disable these macros.
+configCHECK_FOR_STACK_OVERFLOW,configUSE_MALLOC_FAILED_HOOK,configUSE_TICK_HOOK.
+16.We have suceesfully integrated RTOS layer into our workspace. DONE....!
