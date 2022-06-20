@@ -58,3 +58,22 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64 D:\L_Workspace\RTOS_wo
 
 !ENTRY org.eclipse.cdt.core 1 0 2022-05-14 18:37:05.106
 !MESSAGE Indexed 'FreeRTOS_ProjectW' (29 sources, 98 headers) in 4.99 sec: 6,083 declarations; 27,867 references; 1 unresolved inclusions; 8 syntax errors; 14 unresolved names (0.041%)
+!SESSION 2022-06-20 14:24:20.093 -----------------------------------------------
+eclipse.buildId=Version 1.9.0
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Framework arguments:  D:\L_Workspace\RTOS_workspace\FreeRTOS_ProjectW\.cproject
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 D:\L_Workspace\RTOS_workspace\FreeRTOS_ProjectW\.cproject
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2022-06-20 14:24:47.363
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-06-20 14:24:47.483
+!MESSAGE Log4j initialized with config file D:\L_Workspace\RTOS_workspace\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-06-20 14:25:02.912
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-06-20 14:25:10.182
+!MESSAGE Indexed 'FreeRTOS_ProjectW' (29 sources, 99 headers) in 6.71 sec: 6,500 declarations; 31,406 references; 0 unresolved inclusions; 1 syntax errors; 0 unresolved names (0%)

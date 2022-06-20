@@ -37,3 +37,20 @@ system service,timebase:system tick timer,system service call by SWI instruction
 15.Still there is a vapplicationTICKHook() error by the time rebuild.For that in FreeRTOSconfig.h disable these macros.
 configCHECK_FOR_STACK_OVERFLOW,configUSE_MALLOC_FAILED_HOOK,configUSE_TICK_HOOK.
 16.We have suceesfully integrated RTOS layer into our workspace. DONE....!
+17.One more changes need to done.Both RTOS and ARM cortex m4 HAL layer  uses systick timer for basic timer.So what we can do
+change the systick timer to TIMER6 in arm cortex HAL layer usage and generate the code.
+
+
+SECTION-6:
+18.what is TASK?
+Task is just a piece of code which is schedulable.For successfully handle the TASK in FREERtos ,there are two steps.
+1.Create a task.(xTaskCreate();)
+2.Implementation of the task.(vATaskFunction();)
+
+Task implementation:
+Keypoint:
+*Task handler generally be implemented as infinite loop.
+*Task handler should never return without deleting the associated task.
+19.Task creation API explanation.(DO refer to PPT).
+20.Task priorities
+21.Code exercises.write a application that creates 2 tasks,TASK-1 and TASK-2 of equal priorities to print "Hello world from Task-x"
